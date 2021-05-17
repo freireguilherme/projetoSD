@@ -30,7 +30,7 @@ class Livro(models.Model):
   ano = models.IntegerField()
 
   def __str__(self):
-    return self.nome
+    return self.titulo
 
 #informações sobre um livro específico 
 class InstanciaLivro(models.Model):
