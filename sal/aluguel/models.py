@@ -36,7 +36,6 @@ class Livro(models.Model):
 class InstanciaLivro(models.Model):
   id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
   livro = models.ForeignKey(Livro, on_delete = models.SET_NULL, null = True)
-  devolucao = models.DateField()
 
   STATUS_EMPRESTIMO = (
     ('m', 'Manutenção'),
@@ -45,14 +44,15 @@ class InstanciaLivro(models.Model):
     ('r', 'Reservado'),
   )
 
-  status = models.CharField(
+  status = models.CharField( 
     max_length=1,
     choices=STATUS_EMPRESTIMO,
     blank = True,
     default = 'm',
     help_text = 'Disponibilidade do livro',
   )
-
+  
+  
 #salva informações sobre o pedido de um cliente
 class Pedido(models.Model):
   #codigo do pedido
@@ -70,7 +70,7 @@ class Pedido(models.Model):
   valor = models.CharField(max_length=100)
 
   def __str__(self):
-    return self.codigoPedido
+    return self.id
 
 #salva informações sobre a entrega do pedido
 class OrdemDeEntrega(models.Model):
@@ -83,4 +83,4 @@ class OrdemDeEntrega(models.Model):
     return pedido.dataPedido + datetime.timedelta(days=1)
 
   def __str__(self):
-    return self.codigo
+    return self.id
