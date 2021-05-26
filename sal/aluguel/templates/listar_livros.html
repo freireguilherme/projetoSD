@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<table class="table table-striped">
+  <tr>
+    <th>Titulo</th>
+    <th>Autor</th>
+    <th>Genero</th>
+    <th>Ano</th>
+  </tr>
+  {% for Livro in object_list %}
+  <tr>
+    <td>{{Livro.titulo}}</td>
+    <td>{{Livro.autor}}</td>
+    <td>{{Livro.genero}}</td>
+    <td>{{Livro.ano}}</td>
+    <td>
+        editar excluir
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="3">Nenhum livro cadastrado!</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
