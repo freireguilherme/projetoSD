@@ -1,4 +1,3 @@
-from . import models
 from .models import *
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
@@ -10,7 +9,23 @@ from django.http import HttpResponse
 
 # Create your views here.
 class IndexView(TemplateView):
-  template_name="base_generic.html"
+  template_name="index.html"
+  model = Livro
+
+  def index(request):
+
+    num_livros = models.Livro.objects.all().count()
+    num_instancias = models.InstanciaLivro.objects.all().count()
+    num_instancias_disponiveis = models.InstanciaLivro.objects.filter(status__exact='d').count()
+    listar_livros = models.Livro.objects.all()
+
+    context = {
+      'num_livros': num_livros,
+      'num_instancias': num_instancias,
+      'num_instancias_disponiveis': num_instancias_disponiveis,
+      'listar_livros': listar_livros,
+      }
+    return render(request, 'index.html', context=context)
 class ClienteCreate(CreateView):
   model = Cliente
   fields = ['cpf', 'nome', 'email', 'cep', 'bairro', 'senha']
