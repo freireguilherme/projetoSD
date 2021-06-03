@@ -1,5 +1,5 @@
 from django.contrib import admin
-from aluguel.models import Cliente, Livro, InstanciaLivro, Pedido, OrdemDeEntrega
+from .models import Cliente, Livro, InstanciaLivro, Pedido, OrdemDeEntrega
 
 # Register your models here.
 admin.site.register(Cliente)
