@@ -32,6 +32,12 @@ class ClienteCreate(CreateView):
   template_name = 'formulario.html'
   success_url = reverse_lazy('index')
 
+class LivroCreate(CreateView):
+  model = Livro
+  fields = ['titulo', 'autor', 'quantidade', 'genero', 'ano']
+  template_name = 'formulario.html'
+  success_url = reverse_lazy('index')
+
 class LivroList(ListView):
   model = Livro
   template_name = 'listar_livros.html'
