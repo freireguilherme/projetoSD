@@ -1,11 +1,14 @@
-from .models import *
+from .models import Livro
+from usuarios.models import Cliente
+from django.db import models
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.http import HttpResponse
+
 
 # Create your views here.
 class IndexView(TemplateView):
@@ -49,8 +52,9 @@ class LivroDelete(DeleteView):
   template_name = 'exclusao.html'
   success_url = reverse_lazy('listar-livros')
 
-class LivroList(ListView):
+class LivroList(LoginRequiredMixin, ListView):
   model = Livro
+  login_url = reverse_lazy('login')
   template_name = 'listar_livros.html'
 """
   def index(request):
