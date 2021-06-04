@@ -1,10 +1,12 @@
 
 from django.db import models
 from django.utils import timezone
+from usuarios.models import Cliente
 
 # Create your models here.
 
 #salva informações sobre clientes
+'''
 class Cliente(models.Model):
   cpf = models.IntegerField()
   nome = models.CharField(max_length=200)
@@ -16,7 +18,7 @@ class Cliente(models.Model):
   
   def __str__(self):
     return self.nome
-
+'''
 #salva informações gerais sobre a biblioteca 
 class Livro(models.Model):
   titulo = models.CharField(max_length=200)
