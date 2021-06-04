@@ -2,6 +2,7 @@
 {% block content %}
 <table class="table table-striped">
   <tr>
+    <th>PK</th>
     <th>Titulo</th>
     <th>Autor</th>
     <th>Genero</th>
@@ -9,12 +10,16 @@
   </tr>
   {% for Livro in object_list %}
   <tr>
+    <td>{{Livro.pk}}</td>
     <td>{{Livro.titulo}}</td>
     <td>{{Livro.autor}}</td>
     <td>{{Livro.genero}}</td>
     <td>{{Livro.ano}}</td>
     <td>
-        editar excluir
+      
+      <a href="{% url 'editar-livro' Livro.pk  %}" class="btn btn-warning">Editar</a>
+      <a href="{% url 'excluir-livro' Livro.pk  %}" class="btn btn-danger">Excluir</a>
+            
     </td>
 </tr>
 {% empty %}
