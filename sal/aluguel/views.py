@@ -36,18 +36,18 @@ class LivroCreate(CreateView):
   model = Livro
   fields = ['titulo', 'autor', 'quantidade', 'genero', 'ano']
   template_name = 'formulario.html'
-  success_url = reverse_lazy('index')
+  success_url = reverse_lazy('listar-livros')
 
 class LivroUpdate(UpdateView):
   model = Livro
   fields = ['titulo', 'autor', 'quantidade', 'genero', 'ano']
   template_name = 'formulario.html'
-  success_url = reverse_lazy('index')
+  success_url = reverse_lazy('listar-livros')
 
 class LivroDelete(DeleteView):
   model = Livro
-  template_name = 'formulario.html'
-  success_url = reverse_lazy('index')
+  template_name = 'exclusao.html'
+  success_url = reverse_lazy('listar-livros')
 
 class LivroList(ListView):
   model = Livro
