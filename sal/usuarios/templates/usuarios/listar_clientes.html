@@ -1,4 +1,5 @@
 {% extends "base_generic.html" %}
+{% load easy_mask %}
 {% block content %}
 <table class="table table-striped">
   <tr>
@@ -14,9 +15,9 @@
   <tr>
     <td>{{Cliente.pk}}</td>
     <td>{{Cliente.nome}}</td>
-    <td>{{Cliente.cpf}}</td>
+    <td>{{Cliente.cpf | cpf}}</td>
     <td>{{Cliente.email}}</td>
-    <td>{{Cliente.cep}}</td>
+    <td>{{Cliente.cep | cep}}</td>
     <td>{{Cliente.bairro}}</td>
     <td>
       
